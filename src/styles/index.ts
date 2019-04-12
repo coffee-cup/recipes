@@ -1,7 +1,9 @@
+import chroma from "chroma-js";
+
 export const colours = {
   text: "#333",
-  primary: "#4d3ae2",
-  secondary: "#ABA7E8",
+  primary: "peachpuff",
+  secondary: "hotpink",
 };
 
 export const fonts = {
@@ -12,3 +14,13 @@ export const fonts = {
 export const fontSizes = {
   base: "16px",
 };
+
+export const darken = (color: string, amount: number) =>
+  chroma(color)
+    .darken(amount)
+    .toString();
+
+export const lighten = (color: string, amount: number) =>
+  chroma(color)
+    .brighten(amount)
+    .toString();
