@@ -8,7 +8,7 @@
     "prebuild": "yarn run lint",
     "build": "cross-env NODE_ENV=production parcel build public/index.html --public-url /",
     "build:watch": "tsc --noEmit -p . --watch",
-    "lint": "tsc --noEmit; tslint -p .",
+    "lint": "set -ex; tsc --noEmit; tslint -p .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
