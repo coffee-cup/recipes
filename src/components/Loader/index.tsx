@@ -1,7 +1,7 @@
 import * as React from "react";
 import { PushSpinner } from "react-spinners-kit";
-import { colours } from "../../styles";
 import styled from "../../styled-components";
+import { colours } from "../../styles";
 
 const Container = styled.div`
   display: flex;

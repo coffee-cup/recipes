@@ -1,8 +1,8 @@
-import { Link as RouterLink } from "react-router-dom";
 import * as React from "react";
+import { RouteComponentProps, withRouter } from "react-router";
+import { Link as RouterLink } from "react-router-dom";
 import styled from "../../styled-components";
 import Button from "../Button";
-import { withRouter, RouteComponentProps } from "react-router";
 
 const StyledLink = styled(RouterLink)`
   color: ${props => props.theme.colours.accent};

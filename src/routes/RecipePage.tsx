@@ -1,9 +1,9 @@
 import * as React from "react";
 import { RouteComponentProps, withRouter } from "react-router";
 import Button from "../components/Button";
+import Header from "../components/Header";
 import Input from "../components/Input";
-import Logo from "../components/Logo";
-import { Detail, Title } from "../components/Text";
+import { Detail } from "../components/Text";
 import * as db from "../database";
 import { Recipe } from "../models";
 import styled from "../styled-components";
@@ -12,9 +12,8 @@ export interface Props {
   recipe: Recipe & { id: string };
 }
 
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
+const StyledRecipePage = styled.div`
+  margin-bottom: 1rem;
 `;
 
 const StyledTextContainer = styled.div`
@@ -84,11 +83,8 @@ const RecipePage = (props: Props & RouteComponentProps) => {
   };
 
   return (
-    <div>
-      <HeaderContainer>
-        <Logo />
-        <Title>{props.recipe.name}</Title>
-      </HeaderContainer>
+    <StyledRecipePage>
+      <Header>{props.recipe.name}</Header>
 
       <IngMethodContainer>
         <TextSection
@@ -108,7 +104,7 @@ const RecipePage = (props: Props & RouteComponentProps) => {
           delete recipe
         </Button>
       </DeleteContainer>
-    </div>
+    </StyledRecipePage>
   );
 };
 

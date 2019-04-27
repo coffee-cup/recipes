@@ -1,21 +1,22 @@
 import * as React from "react";
 import { Route, Switch } from "react-router";
-import { ThemeProvider } from "styled-components";
 import { RouteComponentProps } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import LoadingPage from "../components/LoadingPage";
 import Page from "../components/Page";
 import { useRecipes } from "../database";
 import { recipeToSlug } from "../models";
 import ListPage from "../routes/ListPage";
 import NewReceipePage from "../routes/NewReceipePage";
-import RecipePage from "../routes/RecipePage";
-import LoadingPage from "../components/LoadingPage";
 import NotFoundPage from "../routes/NotFoundPage";
+import RecipePage from "../routes/RecipePage";
 import styled from "../styled-components";
 import { baseFontSize, theme } from "../styles";
 
 const StyledApp = styled.div`
   max-width: 70ch;
   margin: auto;
+  overflow-x: hidden;
 
   color: ${props => props.theme.colours.text};
   font-size: ${baseFontSize}px;
@@ -58,7 +59,7 @@ const RecipePageWithProps = (props: RouteComponentProps<{ name: string }>) => {
 
 const App = () => (
   <ThemeProvider theme={theme}>
-    <StyledApp className="ph2">
+    <StyledApp className="ph3">
       <Switch>
         <Route exact path="/" component={ListPage} />
         <Route exact path="/new" component={NewReceipePage} />

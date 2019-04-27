@@ -1,7 +1,7 @@
 import * as React from "react";
-import styled from "../styled-components";
-import { Title } from "../components/Text";
 import Link from "../components/Link";
+import { Title } from "../components/Text";
+import styled from "../styled-components";
 
 const Container = styled.div`
   min-height: 100vh;

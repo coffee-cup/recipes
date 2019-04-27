@@ -1,4 +1,5 @@
 import chroma from "chroma-js";
+import { css } from "styled-components";
 
 export type Colour = string;
 export type Font = string;
@@ -73,3 +74,19 @@ export const lighten = (color: string, amount: number) =>
   chroma(color)
     .brighten(amount)
     .toString();
+
+export const NarrowScreenWidth = 768;
+
+export const forNarrowScreen = (first: any, ...interpolations: any[]) => css`
+  @media only screen ${NarrowScreenWidth != null &&
+      css` and (max-width: ${NarrowScreenWidth}px)`} {
+    ${css(first, ...interpolations)}
+  }
+`;
+
+export const forWideScreen = (first: any, ...interpolations: any[]) => css`
+  @media only screen ${NarrowScreenWidth != null &&
+      css` and (min-width: ${NarrowScreenWidth}px)`} {
+    ${css(first, ...interpolations)}
+  }
+`;

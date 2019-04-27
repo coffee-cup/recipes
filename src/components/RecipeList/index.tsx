@@ -12,9 +12,13 @@ const StyledRecipe = styled(Link)`
   text-decoration: none;
 `;
 
+const StyledRecipeHeader = styled.h3`
+  word-wrap: anywhere;
+`;
+
 const Recipe = ({ recipe }: { recipe: Recipe }) => (
   <StyledRecipe to={`/${recipeToSlug(recipe)}`}>
-    <h3 className="f3">{recipe.name}</h3>
+    <StyledRecipeHeader className="f3">{recipe.name}</StyledRecipeHeader>
   </StyledRecipe>
 );
 
