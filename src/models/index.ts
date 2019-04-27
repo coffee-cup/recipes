@@ -12,3 +12,6 @@ export interface Ingredient {
 
 export const validateRecipe = (recipe: Recipe): boolean =>
   recipe.name !== "" && recipe.ingredients !== "" && recipe.method !== "";
+
+export const recipeToSlug = (recipe: Recipe): string =>
+  encodeURIComponent(recipe.name.toLowerCase().replace(/\s+/, "-"));

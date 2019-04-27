@@ -27,12 +27,17 @@ const StyledButton = styled.button`
 
 export interface Props {
   children?: React.ReactNode;
+  className?: string;
   onClick?: () => any;
   type?: "button" | "submit" | "reset";
 }
 
 const Button = (props: Props) => (
-  <StyledButton type={props.type} onClick={props.onClick}>
+  <StyledButton
+    className={props.className}
+    type={props.type}
+    onClick={props.onClick}
+  >
     {props.children}
   </StyledButton>
 );

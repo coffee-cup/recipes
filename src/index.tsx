@@ -1,22 +1,27 @@
-import { ConnectedRouter } from "connected-react-router";
+import firebase from "firebase/app";
+import "firebase/firestore";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import configureStore, { history } from "./redux";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import "./index.scss";
 
-const isProduction = process.env.NODE_ENV === "production";
-const store = configureStore(isProduction);
+const firebaseConfig = {
+  apiKey: process.env.FIREBASE_API_KEY,
+  authDomain: `${process.env.FIREBASE_PROJECT_ID}.firebaseapp.com`,
+  databaseURL: `https://${process.env.FIREBASE_PROJECT_ID}.firebaseio.com`,
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  storageBucket: `${process.env.FIREBASE_PROJECT_ID}.appspot.com`,
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const render = () => {
   const App = require("./App").default;
   ReactDOM.render(
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <App />
-      </ConnectedRouter>
-    </Provider>,
+    <Router>
+      <App />
+    </Router>,
     document.getElementById("root"),
   );
 };

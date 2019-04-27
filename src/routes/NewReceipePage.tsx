@@ -1,12 +1,29 @@
 import * as React from "react";
-import { Title } from "../components/Text";
+import Logo from "../components/Logo";
 import NewRecipeForm from "../components/NewRecipeForm";
+import { Title } from "../components/Text";
+import * as db from "../database";
+import { Recipe } from "../models";
+import styled from "../styled-components";
 
-const NewReceipePage = () => {
+const HeaderContainer = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const NewReceipePage = (props: any) => {
+  const onCreate = (recipe: Recipe) => {
+    db.createRecipe(recipe);
+    props.history.push("/");
+  };
+
   return (
     <div>
-      <Title>New Receipe</Title>
-      <NewRecipeForm onCreate={recipe => console.log(recipe)} />
+      <HeaderContainer>
+        <Logo />
+        <Title>New Receipe</Title>
+      </HeaderContainer>
+      <NewRecipeForm onCreate={onCreate} />
     </div>
   );
 };

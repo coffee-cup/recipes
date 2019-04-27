@@ -1,9 +1,10 @@
-import { push } from "connected-react-router";
+import { Link as RouterLink } from "react-router-dom";
 import * as React from "react";
-import { connect } from "react-redux";
 import styled from "../../styled-components";
+import Button from "../Button";
+import { withRouter, RouteComponentProps } from "react-router";
 
-const StyledLink = styled.a`
+const StyledLink = styled(RouterLink)`
   color: ${props => props.theme.colours.accent};
   cursor: pointer;
 
@@ -16,26 +17,25 @@ const StyledLink = styled.a`
 
 export interface Props {
   children?: React.ReactNode;
+  className?: string;
+  asButton?: boolean;
   to: string;
 }
 
-export interface EnhancedProps extends Props {
-  push: (to: string) => any;
-}
+const Link = (props: Props & RouteComponentProps) =>
+  props.asButton ? (
+    <Button
+      className={props.className}
+      onClick={() => {
+        props.history.push(props.to);
+      }}
+    >
+      {props.children}
+    </Button>
+  ) : (
+    <StyledLink className={props.className} to={props.to}>
+      {props.children}
+    </StyledLink>
+  );
 
-const Link = (props: EnhancedProps) => (
-  <StyledLink
-    onClick={(e: any) => {
-      props.push(props.to);
-      e.stopPropagation();
-      e.preventDefault();
-    }}
-  >
-    {props.children}
-  </StyledLink>
-);
-
-export default connect(
-  null,
-  { push },
-)(Link);
+export default withRouter(Link);

@@ -1,25 +1,38 @@
 import * as React from "react";
-import { connect } from "react-redux";
 import Link from "../components/Link";
-import ReceipeComp from "../components/Receipe";
-import { Title } from "../components/Text";
-import { Recipe } from "../models";
-import { State } from "../redux";
+import Loader from "../components/Loader";
+import RecipeList from "../components/RecipeList";
+import { SubTitle, Title } from "../components/Text";
+import { useRecipes } from "../database";
+import styled from "../styled-components";
 
-export interface Props {
-  receipes: Recipe[];
-}
+const Error = styled(SubTitle)`
+  color: ${props => props.theme.colours.error};
+`;
 
-const ListPage = (props: Props) => (
-  <div>
-    <Title>Receipes</Title>
-    <Link to="/new">New Receipe</Link>
-    {props.receipes.map((r, i) => (
-      <ReceipeComp receipe={r} key={i} />
-    ))}
-  </div>
-);
+const RecipeContainer = styled.div``;
 
-export default connect((state: State) => ({
-  receipes: state.app.receipes,
-}))(ListPage);
+const ListPage = () => {
+  const { error, loading, value } = useRecipes();
+  const recipes = value;
+
+  return (
+    <div>
+      <Title>Receipes</Title>
+      <Link to="/new" asButton>
+        New Receipe
+      </Link>
+
+      {error && <Error>Error getting recipes</Error>}
+      {loading && <Loader />}
+
+      {!error && recipes != null && (
+        <RecipeContainer>
+          <RecipeList recipes={recipes} />
+        </RecipeContainer>
+      )}
+    </div>
+  );
+};
+
+export default ListPage;
