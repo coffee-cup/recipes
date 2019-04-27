@@ -6,7 +6,6 @@ const StyledButton = styled.button`
   color: ${colours.secondary};
   background-color: ${colours.primary};
   padding: 0.5rem 1rem;
-  margin: 0.25rem 0;
 
   font-weight: bold;
 
@@ -29,10 +28,13 @@ const StyledButton = styled.button`
 export interface Props {
   children?: React.ReactNode;
   onClick?: () => any;
+  type?: "button" | "submit" | "reset";
 }
 
 const Button = (props: Props) => (
-  <StyledButton onClick={props.onClick}>{props.children}</StyledButton>
+  <StyledButton type={props.type} onClick={props.onClick}>
+    {props.children}
+  </StyledButton>
 );
 
 export default Button;

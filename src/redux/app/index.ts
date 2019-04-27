@@ -1,7 +1,7 @@
-import { Receipe } from "../../models";
+import { Recipe } from "../../models";
 
 export interface State {
-  receipes: Receipe[];
+  receipes: Recipe[];
 }
 
 const initialState: State = {
@@ -12,10 +12,10 @@ export type Action = CreateReceipe;
 
 export interface CreateReceipe {
   type: "CREATE_RECEIPE";
-  receipe: Receipe;
+  receipe: Recipe;
 }
 
-export const createReceipe = (receipe: Receipe): CreateReceipe => ({
+export const createReceipe = (receipe: Recipe): CreateReceipe => ({
   type: "CREATE_RECEIPE",
   receipe,
 });

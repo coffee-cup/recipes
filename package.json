@@ -6,6 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development parcel public/index.html ",
     "build": "cross-env NODE_ENV=production parcel build public/index.html --public-url /",
+    "build:watch": "tsc --noEmit -p . --watch",
     "lint": "tsc --noEmit; tslint -p .",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -17,6 +18,7 @@
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.1",
     "react-router-dom": "^5.0.0",
+    "react-textarea-autosize": "^7.1.0",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
@@ -38,6 +40,7 @@
     "@types/react-dom": "^16.8.3",
     "@types/react-redux": "^7.0.6",
     "@types/react-router-dom": "^4.3.2",
+    "@types/react-textarea-autosize": "^4.3.4",
     "@types/redux-thunk": "^2.1.0",
     "@types/styled-components": "4.1.8",
     "babel-loader": "^8.0.5",

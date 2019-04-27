@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import ListPage from "../routes/ListPage";
 import NewReceipePage from "../routes/NewReceipePage";
 import styled from "../styled-components";
-import { theme, baseFontSize } from "../styles";
+import { baseFontSize, theme } from "../styles";
 
 const StyledApp = styled.div`
   max-width: 70ch;

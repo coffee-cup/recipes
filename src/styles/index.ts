@@ -1,21 +1,22 @@
 import chroma from "chroma-js";
 
-export type Color = string;
+export type Colour = string;
 export type Font = string;
 export type Size = string;
 
-export interface Colors {
-  primary: Color;
-  secondary: Color;
-  accent: Color;
-  text: Color;
+export interface Colours {
+  primary: Colour;
+  secondary: Colour;
+  accent: Colour;
+  text: Colour;
+  error: Colour;
 }
 
 export interface Fonts {
   text: Font;
 }
 
-export type FontSizes = {
+export interface FontSizes {
   title: Size;
   subtitle: Size;
   header: Size;
@@ -26,18 +27,19 @@ export type FontSizes = {
   large: Size;
   base: Size;
   detail: Size;
-};
+}
 
 export interface Theme {
-  colours: Colors;
+  colours: Colours;
   fonts: Fonts;
 }
 
-export const colours: Colors = {
+export const colours: Colours = {
   text: "#333",
   primary: "peachpuff",
   secondary: "hotpink",
   accent: "hotpink",
+  error: "red",
 };
 
 export const fonts: Fonts = {

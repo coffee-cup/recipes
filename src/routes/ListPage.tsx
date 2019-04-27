@@ -1,13 +1,13 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import ReceipeComp from "../components/Receipe";
-import { Receipe } from "../models";
-import { State } from "../redux";
-import { Title } from "../components/Text";
 import Link from "../components/Link";
+import ReceipeComp from "../components/Receipe";
+import { Title } from "../components/Text";
+import { Recipe } from "../models";
+import { State } from "../redux";
 
 export interface Props {
-  receipes: Receipe[];
+  receipes: Recipe[];
 }
 
 const ListPage = (props: Props) => (

@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Receipe } from "../../models";
+import { Recipe } from "../../models";
 
 export interface Props {
-  receipe: Receipe;
+  receipe: Recipe;
 }
 
 const Receipe = ({ receipe }: Props) => (
@@ -11,4 +11,4 @@ const Receipe = ({ receipe }: Props) => (
   </div>
 );
 
-export default Receipe;
+export default Recipe;
