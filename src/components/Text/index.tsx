@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const Title = (props: Props) => (
-  <h1 className={`f1 fw7 ${props.className}`}>{props.children}</h1>
+  <h1 className={`f1-ns f2 fw7 ${props.className}`}>{props.children}</h1>
 );
 
 export const SubTitle = (props: Props) => (

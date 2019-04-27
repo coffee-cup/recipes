@@ -5,6 +5,7 @@ export type Font = string;
 export type Size = string;
 
 export interface Colours {
+  bg: Colour;
   primary: Colour;
   secondary: Colour;
   accent: Colour;
@@ -35,6 +36,7 @@ export interface Theme {
 }
 
 export const colours: Colours = {
+  bg: "snow",
   text: "#333",
   primary: "peachpuff",
   secondary: "hotpink",

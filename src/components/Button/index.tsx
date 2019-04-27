@@ -2,6 +2,18 @@ import * as React from "react";
 import styled from "styled-components";
 import { colours, darken, lighten } from "../../styles";
 
+const StyledLink = styled.span`
+  color: ${props => props.theme.colours.accent};
+  cursor: pointer;
+  text-decoration: underline;
+
+  transition: opacity 250ms ease-in-out;
+
+  &:hover {
+    opacity: 0.8;
+  }
+`;
+
 const StyledButton = styled.button`
   color: ${colours.secondary};
   background-color: ${colours.primary};
@@ -30,16 +42,22 @@ export interface Props {
   className?: string;
   onClick?: () => any;
   type?: "button" | "submit" | "reset";
+  asLink?: boolean;
 }
 
-const Button = (props: Props) => (
-  <StyledButton
-    className={props.className}
-    type={props.type}
-    onClick={props.onClick}
-  >
-    {props.children}
-  </StyledButton>
-);
+const Button = (props: Props) =>
+  props.asLink ? (
+    <StyledLink className={props.className} onClick={props.onClick}>
+      {props.children}
+    </StyledLink>
+  ) : (
+    <StyledButton
+      className={props.className}
+      type={props.type}
+      onClick={props.onClick}
+    >
+      {props.children}
+    </StyledButton>
+  );
 
 export default Button;

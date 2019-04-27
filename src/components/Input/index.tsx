@@ -11,6 +11,9 @@ export interface Props {
   showErrors?: boolean;
   label?: string;
   onChange?: (value: string) => any;
+  onBlur?: () => any;
+  autoFocus?: boolean;
+  className?: string;
 }
 
 const StyledLabel = styled.label`
@@ -37,8 +40,9 @@ const StyledInput = styled.input`
 const StyledTextArea = styled(TextareaAutosize)`
   appearance: none;
   border: solid 1px ${props => props.theme.colours.primary};
-  padding: 0.5rem 0.5rem;
-  min-height: 10rem;
+  padding: 0.5rem;
+  min-height: 6rem;
+  line-height: 1.6;
   resize: vertical;
 
   &.error {
@@ -59,7 +63,7 @@ const Input = (props: Props) => {
   const isError = props.showErrors && props.required && props.value === "";
 
   return (
-    <StyledLabel>
+    <StyledLabel className={props.className}>
       <LabelTextContainer>
         <StyledLabelText>
           {props.label && <Detail>{props.label}</Detail>}
@@ -80,6 +84,8 @@ const Input = (props: Props) => {
           onChange={(e: any) =>
             props.onChange && props.onChange(e.target.value)
           }
+          onBlur={props.onBlur}
+          autoFocus={props.autoFocus}
         />
       ) : (
         <StyledInput
@@ -90,6 +96,8 @@ const Input = (props: Props) => {
           onChange={(e: any) =>
             props.onChange && props.onChange(e.target.value)
           }
+          onBlur={props.onBlur}
+          autoFocus={props.autoFocus}
         />
       )}
     </StyledLabel>

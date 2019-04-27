@@ -7,6 +7,7 @@ import { withRouter, RouteComponentProps } from "react-router";
 const StyledLink = styled(RouterLink)`
   color: ${props => props.theme.colours.accent};
   cursor: pointer;
+  text-decoration: underline;
 
   transition: opacity 250ms ease-in-out;
 
