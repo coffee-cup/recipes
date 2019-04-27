@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router";
 import { ThemeProvider } from "styled-components";
 import ListPage from "../routes/ListPage";
 import NewReceipePage from "../routes/NewReceipePage";
+import NotFoundPage from "../routes/NotFoundPage";
 import styled from "../styled-components";
 import { baseFontSize, theme } from "../styles";
 
@@ -32,6 +33,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={ListPage} />
         <Route exact path="/new" component={NewReceipePage} />
+        <Route path="*" component={NotFoundPage} />
       </Switch>
     </StyledApp>
   </ThemeProvider>
