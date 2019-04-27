@@ -1,7 +1,8 @@
 export interface Receipe {
   name: string;
   description?: string;
-  ingridents: Ingredient[];
+  ingridents: string;
+  method: string;
 }
 
 export interface Ingredient {

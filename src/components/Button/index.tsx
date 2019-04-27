@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import { colours, lighten, darken } from "../../styles";
+import { colours, darken, lighten } from "../../styles";
 
 const StyledButton = styled.button`
   color: ${colours.secondary};

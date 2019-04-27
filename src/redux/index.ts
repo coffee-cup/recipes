@@ -1,8 +1,8 @@
 import {
+  CallHistoryMethodAction,
   connectRouter,
   routerMiddleware,
   RouterState,
-  CallHistoryMethodAction,
 } from "connected-react-router";
 import { createBrowserHistory, History } from "history";
 import * as _ from "lodash";
@@ -15,9 +15,9 @@ import {
 import { createLogger } from "redux-logger";
 import thunkMiddleware from "redux-thunk";
 import {
-  State as AppState,
   Action as AppAction,
   reducer as AppReducer,
+  State as AppState,
 } from "./app";
 
 export interface State {
