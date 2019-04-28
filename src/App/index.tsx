@@ -17,7 +17,6 @@ import { baseFontSize, theme } from "../styles";
 const StyledApp = styled.div`
   max-width: 70ch;
   margin: auto;
-  overflow-x: hidden;
 
   color: ${props => props.theme.colours.text};
   font-size: ${baseFontSize}px;

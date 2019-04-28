@@ -10,6 +10,7 @@ export interface Props {
   required?: boolean;
   showErrors?: boolean;
   label?: string;
+  disabled?: boolean;
   onChange?: (value: string) => any;
   onBlur?: () => any;
   autoFocus?: boolean;
@@ -42,10 +43,15 @@ const StyledTextArea = styled(TextareaAutosize)`
   border: solid 1px ${props => props.theme.colours.primary};
   padding: 0.5rem;
   line-height: 1.6;
+  min-height: 4rem;
   resize: none;
 
   &.error {
     border-color: ${props => props.theme.colours.error};
+  }
+
+  &:disabled {
+    color: inherit;
   }
 `;
 
@@ -81,6 +87,7 @@ const Input = (props: Props) => {
           value={props.value}
           name={props.label || ""}
           placeholder={props.placeholder}
+          disabled={props.disabled}
           onChange={(e: any) =>
             props.onChange && props.onChange(e.target.value)
           }
@@ -93,6 +100,7 @@ const Input = (props: Props) => {
           value={props.value}
           name={props.label || ""}
           placeholder={props.placeholder}
+          disabled={props.disabled}
           onChange={(e: any) =>
             props.onChange && props.onChange(e.target.value)
           }

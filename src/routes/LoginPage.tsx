@@ -1,8 +1,8 @@
 import * as React from "react";
 import Button from "../components/Button";
-import FullPage from "../components/FullPage";
 import Header from "../components/Header";
 import LoadingPage from "../components/LoadingPage";
+import Page from "../components/Page";
 import * as auth from "../database";
 
 const LoginPage = () => {
@@ -15,10 +15,10 @@ const LoginPage = () => {
     return <LoadingPage />;
   }
 
-  const header = user != null ? user.displayName : "Recipes";
+  const header = user != null ? user.displayName : "Login";
 
   return (
-    <FullPage>
+    <Page>
       <Header>{header}</Header>
 
       {user != null ? (
@@ -26,7 +26,7 @@ const LoginPage = () => {
       ) : (
         <Button onClick={login}>Login with Google</Button>
       )}
-    </FullPage>
+    </Page>
   );
 };
 

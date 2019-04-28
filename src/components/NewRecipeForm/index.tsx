@@ -10,6 +10,10 @@ export interface Props {
 
 const StyledNewRecipeForm = styled.div``;
 
+const StyledFormElement = styled.div`
+  margin-bottom: 1rem;
+`;
+
 const NewRecipeForm = (props: Props) => {
   const [newRecipe, setNewRecipe] = React.useState<Recipe>({
     name: "",
@@ -50,34 +54,40 @@ const NewRecipeForm = (props: Props) => {
   return (
     <StyledNewRecipeForm>
       <form onSubmit={submitForm}>
-        <Input
-          label="Name"
-          value={newRecipe.name}
-          placeholder="Something delicious"
-          onChange={setName}
-          showErrors={showErrors}
-          required
-        />
+        <StyledFormElement>
+          <Input
+            label="Name"
+            value={newRecipe.name}
+            placeholder="Something delicious"
+            onChange={setName}
+            showErrors={showErrors}
+            required
+          />
+        </StyledFormElement>
 
-        <Input
-          textarea
-          label="Ingredients"
-          value={newRecipe.ingredients}
-          placeholder="- Cheese"
-          onChange={setIngredients}
-          showErrors={showErrors}
-          required
-        />
+        <StyledFormElement>
+          <Input
+            textarea
+            label="Ingredients"
+            value={newRecipe.ingredients}
+            placeholder="- Cheese"
+            onChange={setIngredients}
+            showErrors={showErrors}
+            required
+          />
+        </StyledFormElement>
 
-        <Input
-          textarea
-          label="Method"
-          value={newRecipe.method}
-          placeholder="Stir real good."
-          onChange={setMethod}
-          showErrors={showErrors}
-          required
-        />
+        <StyledFormElement>
+          <Input
+            textarea
+            label="Method"
+            value={newRecipe.method}
+            placeholder="Stir real good."
+            onChange={setMethod}
+            showErrors={showErrors}
+            required
+          />
+        </StyledFormElement>
 
         <Button type="submit">Create</Button>
       </form>

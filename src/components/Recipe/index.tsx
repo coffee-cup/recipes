@@ -7,6 +7,7 @@ import { Detail } from "../Text";
 
 export interface Props {
   recipe: Recipe & { id: string };
+  canEdit: boolean;
   onUpdateRecipe: (recipe: Recipe & { id: string }) => any;
 }
 
@@ -38,30 +39,28 @@ const TextArea = styled(Input)`
   }
 `;
 
-const TextSection = ({
-  name,
-  text,
-  onChange,
-}: {
+const TextSection = (props: {
   name: string;
   text: string;
+  canEdit: boolean;
   onChange?: (value: string) => any;
 }) => {
-  const [textValue, setTextValue] = React.useState(text);
+  const [textValue, setTextValue] = React.useState(props.text);
 
   return (
     <StyledTextContainer>
       <StyledName>
-        <Detail>{name}</Detail>
+        <Detail>{props.name}</Detail>
       </StyledName>
       <TextArea
         textarea
         value={textValue}
         placeholder=""
         onChange={setTextValue}
+        disabled={!props.canEdit}
         onBlur={() => {
-          if (onChange) {
-            onChange(textValue);
+          if (props.onChange) {
+            props.onChange(textValue);
           }
         }}
       />
@@ -85,11 +84,13 @@ const Recipe = (props: Props) => {
           name="ingredients"
           text={props.recipe.ingredients}
           onChange={setIngredients}
+          canEdit={props.canEdit}
         />
         <TextSection
           name="method"
           text={props.recipe.method}
           onChange={setMethod}
+          canEdit={props.canEdit}
         />
       </IngMethodContainer>
     </StyledRecipe>
