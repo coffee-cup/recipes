@@ -23,7 +23,7 @@ const ListPage = () => {
 
   return (
     <Page>
-      <Header subtitle="A collection of delicious recipes." hideLogoDesktop>
+      <Header subtitle="A collection of delicious recipes" hideLogoDesktop>
         Recipes
       </Header>
 
