@@ -14,12 +14,12 @@ export interface Props {
   onBlur?: () => any;
   autoFocus?: boolean;
   className?: string;
+  disableGramm?: boolean;
 }
 
 const StyledLabel = styled.label`
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
 `;
 
 const LabelTextContainer = styled.div`
@@ -41,9 +41,8 @@ const StyledTextArea = styled(TextareaAutosize)`
   appearance: none;
   border: solid 1px ${props => props.theme.colours.primary};
   padding: 0.5rem;
-  min-height: 6rem;
   line-height: 1.6;
-  resize: vertical;
+  resize: none;
 
   &.error {
     border-color: ${props => props.theme.colours.error};
@@ -77,6 +76,7 @@ const Input = (props: Props) => {
       </LabelTextContainer>
       {props.textarea ? (
         <StyledTextArea
+          data-gramm_editor={props.disableGramm ? "true" : undefined}
           className={isError ? "error" : ""}
           value={props.value}
           name={props.label || ""}
