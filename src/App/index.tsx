@@ -2,11 +2,12 @@ import * as React from "react";
 import { Route, Switch } from "react-router";
 import { RouteComponentProps } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import FullPage from "../components/FullPage";
 import LoadingPage from "../components/LoadingPage";
-import Page from "../components/Page";
 import { useRecipes } from "../database";
 import { recipeToSlug } from "../models";
 import ListPage from "../routes/ListPage";
+import LoginPage from "../routes/LoginPage";
 import NewReceipePage from "../routes/NewReceipePage";
 import NotFoundPage from "../routes/NotFoundPage";
 import RecipePage from "../routes/RecipePage";
@@ -43,7 +44,7 @@ const RecipePageWithProps = (props: RouteComponentProps<{ name: string }>) => {
   }
 
   if ((!loading && error) || value == null) {
-    return <Page>Error getting recipe</Page>;
+    return <FullPage>Error getting recipe</FullPage>;
   }
 
   const recipe = value.filter(
@@ -63,6 +64,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={ListPage} />
         <Route exact path="/new" component={NewReceipePage} />
+        <Route exact path="/login" component={LoginPage} />
         <Route exact path="/:name" component={RecipePageWithProps} />
         <Route path="*" component={NotFoundPage} />
       </Switch>

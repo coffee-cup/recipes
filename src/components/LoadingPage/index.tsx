@@ -1,11 +1,11 @@
 import * as React from "react";
+import FullPage from "../FullPage";
 import Loader from "../Loader";
-import Page from "../Page";
 
 const LoadingPage = () => (
-  <Page>
+  <FullPage>
     <Loader />
-  </Page>
+  </FullPage>
 );
 
 export default LoadingPage;

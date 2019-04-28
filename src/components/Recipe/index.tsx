@@ -60,7 +60,9 @@ const TextSection = ({
         placeholder=""
         onChange={setTextValue}
         onBlur={() => {
-          onChange && onChange(textValue);
+          if (onChange) {
+            onChange(textValue);
+          }
         }}
       />
     </StyledTextContainer>

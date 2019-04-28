@@ -1,17 +1,24 @@
 import * as React from "react";
 import styled from "../../styled-components";
-
-const Container = styled.div`
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
+import Footer from "../Footer";
 
 interface Props {
   children?: React.ReactNode;
 }
 
-const Page = (props: Props) => <Container>{props.children}</Container>;
+const StyledPage = styled.div`
+  padding-bottom: 2rem;
+`;
+
+const Container = styled.div`
+  min-height: 100vh;
+`;
+
+const Page = (props: Props) => (
+  <StyledPage>
+    <Container>{props.children}</Container>
+    <Footer />
+  </StyledPage>
+);
 
 export default Page;

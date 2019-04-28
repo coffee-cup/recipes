@@ -1,6 +1,7 @@
 import * as React from "react";
 import Link from "../components/Link";
 import Loader from "../components/Loader";
+import Page from "../components/Page";
 import RecipeList from "../components/RecipeList";
 import { SubTitle, Title } from "../components/Text";
 import { useRecipes } from "../database";
@@ -17,7 +18,7 @@ const ListPage = () => {
   const recipes = value;
 
   return (
-    <div>
+    <Page>
       <Title>Receipes</Title>
       <Link to="/new" asButton>
         New Receipe
@@ -31,7 +32,7 @@ const ListPage = () => {
           <RecipeList recipes={recipes} />
         </RecipeContainer>
       )}
-    </div>
+    </Page>
   );
 };
 

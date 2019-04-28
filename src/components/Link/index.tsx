@@ -4,6 +4,14 @@ import { Link as RouterLink } from "react-router-dom";
 import styled from "../../styled-components";
 import Button from "../Button";
 
+export interface Props {
+  children?: React.ReactNode;
+  className?: string;
+  asButton?: boolean;
+  noUnderline?: boolean;
+  to: string;
+}
+
 const StyledLink = styled(RouterLink)`
   color: ${props => props.theme.colours.accent};
   cursor: pointer;
@@ -11,17 +19,14 @@ const StyledLink = styled(RouterLink)`
 
   transition: opacity 250ms ease-in-out;
 
+  &.no-underline {
+    text-decoration: none;
+  }
+
   &:hover {
     opacity: 0.8;
   }
 `;
-
-export interface Props {
-  children?: React.ReactNode;
-  className?: string;
-  asButton?: boolean;
-  to: string;
-}
 
 const Link = (props: Props & RouteComponentProps) =>
   props.asButton ? (
@@ -34,7 +39,12 @@ const Link = (props: Props & RouteComponentProps) =>
       {props.children}
     </Button>
   ) : (
-    <StyledLink className={props.className} to={props.to}>
+    <StyledLink
+      className={`${props.className} ${
+        props.noUnderline ? "no-underline" : ""
+      }`}
+      to={props.to}
+    >
       {props.children}
     </StyledLink>
   );
