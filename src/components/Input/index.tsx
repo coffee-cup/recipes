@@ -4,8 +4,8 @@ import styled from "../../styled-components";
 import { Detail } from "../Text";
 
 export interface Props {
-  placeholder: string;
   value: string;
+  placeholder?: string;
   textarea?: boolean;
   required?: boolean;
   showErrors?: boolean;

@@ -34,7 +34,7 @@ const TextArea = styled(Input)`
     border: solid 1px ${props => props.theme.colours.bg};
 
     &:focus {
-      border: solid 1px ${props => props.theme.colours.secondary};
+      border: solid 1px ${props => props.theme.colours.primary};
     }
   }
 `;

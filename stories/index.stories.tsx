@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 import { withInfo } from "@storybook/addon-info";
 
 import Button from "../src/components/Button";
-import AddReceipe from "../src/components/AddReceipe";
+import NewRecipeForm from "../src/components/NewRecipeForm";
 import Input from "../src/components/Input";
 
 const infoParams = {
@@ -22,9 +22,9 @@ storiesOf("Button", module)
 storiesOf("Input", module)
   .addDecorator(withInfo)
   .addParameters(infoParams)
-  .add("base", () => <Input />);
+  .add("empty", () => <Input value="" />);
 
 storiesOf("Add Receipe", module)
   .addDecorator(withInfo)
   .addParameters(infoParams)
-  .add("base", () => <AddReceipe onAdd={action("add receipe")} />);
+  .add("base", () => <NewRecipeForm onCreate={action("create")} />);
