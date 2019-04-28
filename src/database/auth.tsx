@@ -50,6 +50,7 @@ export const useUser = (): { initialising: boolean; user: User | null } => {
   React.useEffect(() => {
     const fetchUser = async () => {
       if (initialising || auth == null) {
+        setUser(null);
         return;
       }
 
@@ -60,9 +61,11 @@ export const useUser = (): { initialising: boolean; user: User | null } => {
         .get();
       const user = userRef.data() as User;
 
-      if (user) {
-        setUser(user);
+      if (!user) {
+        setUser(null);
       }
+
+      setUser(user);
     };
 
     fetchUser();
