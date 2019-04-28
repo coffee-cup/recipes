@@ -28,7 +28,7 @@ const ListPage = () => {
   return (
     <Page>
       <HeaderContainer>
-        <Title className="mb0">Receipes</Title>
+        <Title className="mb0">Recipes</Title>
         <Text className="mt2">{"A collection of delicious recipes."}</Text>
         <Separator />
       </HeaderContainer>
