@@ -15,3 +15,9 @@ export const validateRecipe = (recipe: Recipe): boolean =>
 
 export const recipeToSlug = (recipe: Recipe): string =>
   encodeURIComponent(recipe.name.toLowerCase().replace(/\s+/, "-"));
+
+export interface User {
+  displayName: string;
+  email: string;
+  admin: boolean;
+}

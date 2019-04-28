@@ -16,7 +16,6 @@ const LoginPage = () => {
   }
 
   const header = user != null ? user.displayName : "Login";
-
   return (
     <Page>
       <Header>{header}</Header>

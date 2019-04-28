@@ -23,7 +23,7 @@ const RecipePage = (props: Props & RouteComponentProps) => {
   };
 
   const { initialising, user } = useUser();
-  const canEdit = !initialising && user != null;
+  const canEdit = !initialising && user != null && user.admin;
 
   return (
     <Page>

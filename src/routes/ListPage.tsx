@@ -23,6 +23,8 @@ const ListPage = () => {
   const { initialising, user } = useUser();
   const recipes = value;
 
+  const canEdit = !initialising && user != null && user.admin;
+
   return (
     <Page>
       <HeaderContainer>
@@ -31,7 +33,7 @@ const ListPage = () => {
         <Separator />
       </HeaderContainer>
 
-      {!initialising && user != null && (
+      {canEdit && (
         <Link to="/new" asButton>
           New Receipe
         </Link>
