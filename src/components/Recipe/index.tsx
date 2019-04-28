@@ -3,7 +3,6 @@ import { Recipe } from "../../models";
 import styled from "../../styled-components";
 import Header from "../Header";
 import Input from "../Input";
-import { Detail } from "../Text";
 
 export interface Props {
   recipe: Recipe & { id: string };
@@ -19,11 +18,6 @@ const StyledTextContainer = styled.div`
 `;
 
 const IngMethodContainer = styled.div``;
-
-const StyledName = styled.div`
-  color: ${props => props.theme.colours.secondary};
-  margin-bottom: 0.2rem;
-`;
 
 const TextArea = styled(Input)`
   textarea {
@@ -49,12 +43,10 @@ const TextSection = (props: {
 
   return (
     <StyledTextContainer>
-      <StyledName>
-        <Detail>{props.name}</Detail>
-      </StyledName>
       <TextArea
         textarea
         value={textValue}
+        label={props.name}
         placeholder=""
         onChange={setTextValue}
         disabled={!props.canEdit}
