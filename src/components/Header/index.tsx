@@ -1,13 +1,14 @@
 import * as React from "react";
 import styled from "../../styled-components";
-import { forNarrowScreen } from "../../styles";
+import { forNarrowScreen, forWideScreen } from "../../styles";
 import Logo from "../Logo";
 import Separator from "../Separator";
-import { Title } from "../Text";
+import { Text, Title } from "../Text";
 
 interface Props {
   children: React.ReactNode;
-  hideLogo?: boolean;
+  subtitle?: string;
+  hideLogoDesktop?: boolean;
 }
 
 const StyledHeader = styled.div`
@@ -21,18 +22,39 @@ const HeaderContainer = styled.div`
   margin-bottom: 1rem;
 
   ${forNarrowScreen`flex-direction: column;`}
-  ${forNarrowScreen`padding-top: 2rem;`}
 
   h1 {
     word-wrap: anywhere;
   }
+
+  &.hideLogoDesktop {
+    .logo {
+      ${forWideScreen`display: none`}
+    }
+  }
+
+  .logo {
+    margin-right: 1rem;
+
+    ${forNarrowScreen`margin-right: 0;`}
+  }
+`;
+
+const TextContainer = styled.div`
+  ${forNarrowScreen`padding-top: 0.5rem;`}
+  ${forNarrowScreen`text-align: center;`}
 `;
 
 const Header = (props: Props) => (
   <StyledHeader>
-    <HeaderContainer>
+    <HeaderContainer className={props.hideLogoDesktop ? "hideLogoDesktop" : ""}>
       <Logo />
-      <Title className="mv0">{props.children}</Title>
+      <TextContainer>
+        <Title className="mv0">{props.children}</Title>
+        {props.subtitle != null && (
+          <Text className="mv0">{props.subtitle}</Text>
+        )}
+      </TextContainer>
     </HeaderContainer>
     <Separator />
   </StyledHeader>

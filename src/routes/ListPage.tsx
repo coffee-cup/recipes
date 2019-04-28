@@ -1,10 +1,10 @@
 import * as React from "react";
+import Header from "../components/Header";
 import Link from "../components/Link";
 import Loader from "../components/Loader";
 import Page from "../components/Page";
 import RecipeList from "../components/RecipeList";
-import Separator from "../components/Separator";
-import { SubTitle, Text, Title } from "../components/Text";
+import { SubTitle } from "../components/Text";
 import { useRecipes, useUser } from "../database";
 import styled from "../styled-components";
 
@@ -13,10 +13,6 @@ const Error = styled(SubTitle)`
 `;
 
 const RecipeContainer = styled.div``;
-
-const HeaderContainer = styled.div`
-  margin-bottom: 1rem;
-`;
 
 const ListPage = () => {
   const { error, loading, value } = useRecipes();
@@ -27,11 +23,9 @@ const ListPage = () => {
 
   return (
     <Page>
-      <HeaderContainer>
-        <Title className="mb0">Recipes</Title>
-        <Text className="mt2">{"A collection of delicious recipes."}</Text>
-        <Separator />
-      </HeaderContainer>
+      <Header subtitle="A collection of delicious recipes." hideLogoDesktop>
+        Recipes
+      </Header>
 
       {canEdit && (
         <Link to="/new" asButton>

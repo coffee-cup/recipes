@@ -13,13 +13,17 @@ export interface Props {
 }
 
 const DeleteContainer = styled.div`
-  padding-top: 2rem;
+  padding: 2rem 0;
 `;
 
 const RecipePage = (props: Props & RouteComponentProps) => {
   const deleteRecipe = () => {
-    db.deleteRecipe(props.recipe);
-    props.history.push("/");
+    const result = window.confirm("Do you really want to delete");
+
+    if (result) {
+      db.deleteRecipe(props.recipe);
+      props.history.push("/");
+    }
   };
 
   const { initialising, user } = useUser();

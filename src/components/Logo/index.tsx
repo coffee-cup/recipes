@@ -5,7 +5,6 @@ import styled from "../../styled-components";
 import { forNarrowScreen } from "../../styles";
 
 const Container = styled.div`
-  margin-right: 1rem;
   color: ${props => props.theme.colours.secondary};
 `;
 
@@ -15,7 +14,7 @@ const Image = styled.img`
 `;
 
 const Logo = () => (
-  <Container>
+  <Container className="logo">
     <Link to="/">
       <Image src={chef} />
     </Link>
