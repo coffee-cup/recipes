@@ -31,6 +31,7 @@ const LabelTextContainer = styled.div`
 const StyledInput = styled.input`
   appearance: none;
   border: solid 2px ${props => props.theme.colours.primary};
+  color: ${props => props.theme.colours.text};
   padding: 0.5rem 0.5rem;
 
   &.error {
@@ -40,6 +41,7 @@ const StyledInput = styled.input`
 
 const StyledTextArea = styled(TextareaAutosize)`
   appearance: none;
+  color: ${props => props.theme.colours.text};
   border: solid 2px ${props => props.theme.colours.primary};
   padding: 0.5rem;
   line-height: 1.6;

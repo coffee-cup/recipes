@@ -29,13 +29,15 @@ const EditSaveButton = styled(StyledLabelText)`
 `;
 
 const TextSectionText = styled.div`
-  white-space: pre;
+  white-space: pre-line;
   min-height: 4rem;
   padding: 0.5rem;
   border: solid 2px ${props => props.theme.colours.bg};
 `;
 
 const TextArea = styled(Input)`
+  margin-bottom: 2.5px;
+
   textarea {
     background-color: ${props => props.theme.colours.bg};
   }
@@ -45,7 +47,7 @@ const TextSection = (props: {
   name: string;
   text: string;
   canEdit: boolean;
-  onChange?: (value: string) => any;
+  onChange: (value: string) => any;
 }) => {
   const [isEditing, setIsEditing] = React.useState(false);
   const [textValue, setTextValue] = React.useState(props.text);
@@ -54,12 +56,14 @@ const TextSection = (props: {
     <StyledTextContainer>
       <TextSectionHeader>
         <StyledLabelText>{props.name}</StyledLabelText>
-        <EditSaveButton onClick={() => setIsEditing(!isEditing)}>
-          {isEditing ? "save" : "edit"}
-        </EditSaveButton>
+        {!isEditing && props.canEdit && (
+          <EditSaveButton onClick={() => setIsEditing(!isEditing)}>
+            edit
+          </EditSaveButton>
+        )}
       </TextSectionHeader>
 
-      {isEditing ? (
+      {isEditing && props.canEdit ? (
         <TextArea
           textarea
           value={textValue}
