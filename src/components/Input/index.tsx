@@ -33,6 +33,7 @@ const StyledInput = styled.input`
   border: solid 2px ${props => props.theme.colours.primary};
   color: ${props => props.theme.colours.text};
   padding: 0.5rem 0.5rem;
+  outline: none;
 
   &.error {
     border-color: ${props => props.theme.colours.error};

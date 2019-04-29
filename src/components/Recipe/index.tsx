@@ -36,8 +36,6 @@ const TextSectionText = styled.div`
 `;
 
 const TextArea = styled(Input)`
-  margin-bottom: 2.5px;
-
   textarea {
     background-color: ${props => props.theme.colours.bg};
   }
