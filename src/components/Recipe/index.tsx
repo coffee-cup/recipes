@@ -2,7 +2,7 @@ import * as React from "react";
 import { Recipe } from "../../models";
 import styled from "../../styled-components";
 import Header from "../Header";
-import Input from "../Input";
+import Input, { StyledLabelText } from "../Input";
 
 export interface Props {
   recipe: Recipe & { id: string };
@@ -19,17 +19,25 @@ const StyledTextContainer = styled.div`
 
 const IngMethodContainer = styled.div``;
 
+const TextSectionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const EditSaveButton = styled(StyledLabelText)`
+  cursor: pointer;
+`;
+
+const TextSectionText = styled.div`
+  white-space: pre;
+  min-height: 4rem;
+  padding: 0.5rem;
+  border: solid 2px ${props => props.theme.colours.bg};
+`;
+
 const TextArea = styled(Input)`
   textarea {
     background-color: ${props => props.theme.colours.bg};
-    outline: solid 1px ${props => props.theme.colours.bg};
-    border: none;
-
-    transition: outline 150ms ease-in-out;
-
-    &:focus {
-      outline: solid 1px ${props => props.theme.colours.primary};
-    }
   }
 `;
 
@@ -39,23 +47,36 @@ const TextSection = (props: {
   canEdit: boolean;
   onChange?: (value: string) => any;
 }) => {
+  const [isEditing, setIsEditing] = React.useState(false);
   const [textValue, setTextValue] = React.useState(props.text);
 
   return (
     <StyledTextContainer>
-      <TextArea
-        textarea
-        value={textValue}
-        label={props.name}
-        placeholder=""
-        onChange={setTextValue}
-        disabled={!props.canEdit}
-        onBlur={() => {
-          if (props.onChange) {
-            props.onChange(textValue);
-          }
-        }}
-      />
+      <TextSectionHeader>
+        <StyledLabelText>{props.name}</StyledLabelText>
+        <EditSaveButton onClick={() => setIsEditing(!isEditing)}>
+          {isEditing ? "save" : "edit"}
+        </EditSaveButton>
+      </TextSectionHeader>
+
+      {isEditing ? (
+        <TextArea
+          textarea
+          value={textValue}
+          placeholder=""
+          onChange={setTextValue}
+          disabled={!props.canEdit}
+          onBlur={() => {
+            if (props.onChange) {
+              props.onChange(textValue);
+            }
+            setIsEditing(false);
+          }}
+          autoFocus
+        />
+      ) : (
+        <TextSectionText>{textValue}</TextSectionText>
+      )}
     </StyledTextContainer>
   );
 };

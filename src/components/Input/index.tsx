@@ -30,7 +30,7 @@ const LabelTextContainer = styled.div`
 
 const StyledInput = styled.input`
   appearance: none;
-  border: solid 1px ${props => props.theme.colours.primary};
+  border: solid 2px ${props => props.theme.colours.primary};
   padding: 0.5rem 0.5rem;
 
   &.error {
@@ -40,11 +40,12 @@ const StyledInput = styled.input`
 
 const StyledTextArea = styled(TextareaAutosize)`
   appearance: none;
-  border: solid 1px ${props => props.theme.colours.primary};
+  border: solid 2px ${props => props.theme.colours.primary};
   padding: 0.5rem;
   line-height: 1.6;
   min-height: 4rem;
   resize: none;
+  outline: none;
 
   &.error {
     border-color: ${props => props.theme.colours.error};
@@ -55,7 +56,7 @@ const StyledTextArea = styled(TextareaAutosize)`
   }
 `;
 
-const StyledLabelText = styled.span`
+export const StyledLabelText = styled(Detail)`
   color: ${props => props.theme.colours.secondary}
   margin-bottom: 0.1rem;
 `;
@@ -70,9 +71,7 @@ const Input = (props: Props) => {
   return (
     <StyledLabel className={props.className}>
       <LabelTextContainer>
-        <StyledLabelText>
-          {props.label && <Detail>{props.label}</Detail>}
-        </StyledLabelText>
+        {props.label && <StyledLabelText>{props.label}</StyledLabelText>}
 
         {isError && (
           <StyledError>
