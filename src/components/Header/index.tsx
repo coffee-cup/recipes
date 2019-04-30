@@ -8,6 +8,7 @@ import { Text, Title } from "../Text";
 interface Props {
   children: React.ReactNode;
   subtitle?: string;
+  onTitleClick?: (e: any) => any;
   hideLogoDesktop?: boolean;
 }
 
@@ -50,7 +51,9 @@ const Header = (props: Props) => (
     <HeaderContainer className={props.hideLogoDesktop ? "hideLogoDesktop" : ""}>
       <Logo />
       <TextContainer>
-        <Title className="mv0">{props.children}</Title>
+        <Title className="mv0" onClick={props.onTitleClick}>
+          {props.children}
+        </Title>
         {props.subtitle != null && (
           <Text className="mv0">{props.subtitle}</Text>
         )}

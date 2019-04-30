@@ -1,5 +1,6 @@
 import * as React from "react";
-import { Recipe } from "../../models";
+import { RouteComponentProps, withRouter } from "react-router";
+import { Recipe, recipeToSlug } from "../../models";
 import styled from "../../styled-components";
 import Header from "../Header";
 import Input, { StyledLabelText } from "../Input";
@@ -83,16 +84,27 @@ const TextSection = (props: {
   );
 };
 
-const Recipe = (props: Props) => {
+const Recipe = (props: Props & RouteComponentProps) => {
   const setIngredients = (value: string) =>
     props.onUpdateRecipe({ ...props.recipe, ingredients: value });
 
   const setMethod = (value: string) =>
     props.onUpdateRecipe({ ...props.recipe, method: value });
 
+  const setName = () => {
+    const newName = window.prompt("Change Recipe Name", props.recipe.name);
+    if (newName) {
+      const newRecipe = { ...props.recipe, name: newName };
+      props.onUpdateRecipe(newRecipe);
+      props.history.push(recipeToSlug(newRecipe));
+    }
+  };
+
   return (
     <StyledRecipe>
-      <Header>{props.recipe.name}</Header>
+      <Header onTitleClick={() => props.canEdit && setName()}>
+        {props.recipe.name}
+      </Header>
 
       <IngMethodContainer>
         <TextSection
@@ -112,4 +124,4 @@ const Recipe = (props: Props) => {
   );
 };
 
-export default Recipe;
+export default withRouter(Recipe);
